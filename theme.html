@@ -1,0 +1,334 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>
+	<link rel="icon" href="{Favicon}"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+	<meta name="viewport" content="width=575"/> <!-- iPhone -->
+	<style type="text/css" media="screen">
+		@font-face {
+			font-family: "Chicago";
+			src: url('http://static.tumblr.com/hvw0vba/s3mkzq5q8/macenvy.ttf') format("truetype"), url('http://static.tumblr.com/hvw0vba/JwAkzq610/macenvy.svg#MacEnvy-Regular') format('svg');
+		} 
+
+		body {
+			background-color: #EEE2B6;
+			margin: 0 auto;
+			text-align: center;
+			font-family: Helvetica;
+			font-size: 10pt;
+			color: #333;
+		}
+      
+		a, a:visited, a:active {
+			color: #000;
+			text-decoration: none;
+			font-weight: 600;
+		}
+      
+		a:hover {
+			text-shadow: 0 0 0.2em #fff, 0 0 0.2em #fff;
+		}
+      
+		#content {
+			margin: 0 auto;
+			text-align: center;
+			width: 550px;
+		}
+
+
+      
+		/* Title and Description */
+		h1 {
+			font-family: Chicago;
+			font-size: 36pt;
+			text-align: left;
+		}
+      
+		h1 a, h1 a:active, h1 a:visited { 
+			text-decoration: none;
+			font-weight: normal;
+			color: #000;
+		}
+      
+		h1 a:hover {
+
+		}
+      
+		h2 {
+			text-align: left;
+			font-family: Chicago;
+			font-size: 12pt;
+		}
+
+		hr.thick {
+			height: 5px;
+			color: #000;
+		}
+
+		#posts {
+
+		}
+      
+      
+		/* Dates */
+		.newdate, .samedate {
+			width: 550px;
+		}
+
+		div.date {
+			text-align: right;
+		}
+      
+      
+		/* Permalinks Info */
+		a.date {
+
+		}
+      
+		a.date:hover {
+
+		}
+      
+      
+		/* Common to all posts */
+		.regular, .quote, .link, .photo, .audio, .video, .conversation {
+			width: 470px;
+			text-align: left;
+			padding-left: 40px;
+		}
+
+		div.embeddedmedia {
+			text-align: center;
+		}
+      
+		.regular h3, .link h3, .conversation h3 {
+
+		}
+      
+      
+		/* Regular Posts */
+		.regular blockquote, .link blockquote {
+
+		}
+      
+		.regular ul, .regular ol {
+			list-style-image: url("http://static.tumblr.com/hvw0vba/a6qkzq5sm/dash.gif");
+		}
+
+		.regular img {
+
+		}
+      
+      
+		/* Quote Post */
+		.quote {
+			font-size: 16pt;
+		}
+      
+		.quote big {
+			font-size: 14pt;
+		}
+      
+		.quote .source {
+			font-size: 10pt;
+		}
+      
+      
+		/* Photo posts */
+		.photo .caption, .audio .caption, .video .caption {
+
+		}
+      
+		.photo img {
+
+		}
+      
+      
+		/* Conversation Posts */
+		.conversation ul {
+			list-style-type: none;
+		}
+      
+		.conversation li {
+
+		}
+      
+		.conversation .person {
+			font-weight: bold;
+		}
+
+      
+		/* Link Posts */
+		.link a {
+
+		}
+      
+		.link .description {
+
+		}
+      
+		/* Previous and Next links */
+		#prevnext {
+
+		}
+      
+		#prevnext .page_numbers {
+			text-align: center;
+		}
+      
+		#prevnext .prev {
+			float: right;
+			font-size: 14pt;
+		}
+      
+		#prevnext .next {
+			float: left;
+			font-size: 14pt;
+		}
+      
+		/* Footer */
+		#footer {
+
+		}
+      
+		#footer h3 {
+
+		}
+      
+		#footer ul {
+			list-style-type: none;
+			padding-left: 0px;
+			margin-left: 0px;
+		}
+      
+		#footer ul li {
+			display: inline;
+		}
+      
+		{CustomCSS}
+	</style>
+</head>
+  
+<body>
+	<div id="content">
+		<h1><a href="/">{Title}</a></h1>
+		<h2>{Description}</h2>
+
+		<hr class="thick" />
+		<br/>
+      
+		<div id="posts">
+			{block:Posts}
+			{block:NewDayDate}
+			<div class="newdate">
+				<div class="date">
+					<a href="{Permalink}" class="date">{ShortMonth} {DayOfMonth}, {Year}</a>
+					<br/>{12Hour}:{Minutes}{AmPm}
+				</div>
+			</div>
+			{/block:NewDayDate}
+			{block:SameDayDate}
+			<div class="samedate">
+				<div class="date">
+					<a href="{Permalink}" class="date">{ShortMonth} {DayOfMonth}, {Year}</a>
+					<br/>{12Hour}:{Minutes}{AmPm}
+				</div>
+			</div>
+			{/block:SameDayDate}
+        
+			{block:Regular}
+			<div class="regular">
+				{block:Title}<h3>{Title}</h3>{/block:Title}
+				{Body}
+			</div>
+			<hr/>
+			{/block:Regular}
+      
+			{block:Quote}
+			<div class="quote">
+				<big>&#147;</big>
+				{Quote}
+				<big>&#148;</big>
+				<br/>
+				{block:Source}<span class="source">- {Source}</span>{/block:Source}
+			</div>
+			<hr/>
+			{/block:Quote}
+        
+			{block:Photo}
+			<div class="photo">
+				<div class="embeddedmedia">{LinkOpenTag}<img src="{PhotoURL-400}" alt="{PhotoAlt}"/>{LinkCloseTag}</div>
+				{block:Caption}<span class="caption">{Caption}</span>{/block:Caption}
+			</div>
+			<hr/>
+			{/block:Photo}
+        
+			{block:Conversation}
+			<div class="conversation">
+				{block:Title}<h3>{Title}</h3>{/block:Title}
+				<ul>
+					{block:Lines}<li>
+						{block:Label}<span class="person">{Label}</span>{/block:Label}
+						{Line}
+					</li>{/block:Lines}
+				</ul>
+			</div>
+			<hr/>
+			{/block:Conversation}
+      
+			{block:Link}
+			<div class="link">
+				<h3><a href="{URL}">{Name} &rarr;</a></h3>
+				{block:Description}<span class="description">{Description}</span>{/block:Description}
+			</div>
+			<hr/>
+			{/block:Link}
+      
+			{block:Audio}
+			<div class="audio">
+				<div class="embeddedmedia">{AudioPlayerBlack}</div>
+				{block:Caption}<span class="caption">{Caption}</span>{/block:Caption}
+				<p><small><small>(Play count: {PlayCount})</small></small></p>
+			</div>
+			<hr/>
+			{/block:Audio}
+      
+			{block:Video}
+			<div class="video">
+				<div class="embeddedmedia">{Video-400}</div>
+				{block:Caption}<span class="caption">{Caption}</span>{/block:Caption}
+			</div>
+			<hr/>
+			{/block:Video}
+			{/block:Posts}
+		</div> <!-- end posts -->
+
+		<div id="prevnext">
+			{block:NextPage}<a href="{NextPage}" class="prev" title="Older posts">&rarr;</a>{/block:NextPage}
+			<span class="page_numbers">Page {CurrentPage} of {TotalPages}</span>
+			{block:PreviousPage}<a href="{PreviousPage}" class="next" title="Newer posts">&larr; &#0187;</a>{/block:PreviousPage}
+		</div>
+		<br/>
+		<div id="footer">
+	
+			<form action="/search" method="get">
+				<input type="search" name="q" value="{SearchQuery}"/>
+				<input type="submit" value="Search"/>
+			</form>
+			<ul>
+				<li><a href="http://scottslamemacblog.tumblr.com/about">About</a> / </li>
+				<li><a href="http://tumblr.com/">Tumblr</a> / </li>
+				<li><a href="http://scottslamemacblog.tumblr.com/">Theme</a> / </li>
+				<li><a href="{RSS}">RSS</a></li>
+				<li><br /><br />
+			</ul>
+			<strong>This site is a <a href="http://scottjackson.org">Scott Jackson</a> creation.</strong></li>
+		</div>
+	</div>
+</body>
+</html>
